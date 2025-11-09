@@ -35,7 +35,7 @@ namespace ListOFDapper
 
         private void InitializeControls()
         {
-            // Настройка группировки элементов управления
+           
             var connectionGroup = new GroupBox()
             {
                 Text = "Управление подключением",
@@ -50,7 +50,7 @@ namespace ListOFDapper
             connectionGroup.Controls.AddRange(new Control[] { connect, disconect, vivodInformation });
             this.Controls.Add(connectionGroup);
 
-            // Группа основных запросов
+           
             var mainQueriesGroup = new GroupBox()
             {
                 Text = "Основные запросы",
@@ -67,7 +67,7 @@ namespace ListOFDapper
             mainQueriesGroup.Controls.AddRange(new Control[] { Imail, List, Auksion, City, Country });
             this.Controls.Add(mainQueriesGroup);
 
-            // Группа фильтрации
+            
             var filterGroup = new GroupBox()
             {
                 Text = "Фильтрация данных",
@@ -84,7 +84,7 @@ namespace ListOFDapper
             filterGroup.Controls.AddRange(new Control[] { OpredCity, opredCountry, acsiiCountry, PokVCity, VCountry });
             this.Controls.Add(filterGroup);
 
-            // Группа статистики
+            
             var statsGroup = new GroupBox()
             {
                 Text = "Статистика",
@@ -102,7 +102,7 @@ namespace ListOFDapper
             statsGroup.Controls.AddRange(new Control[] { button2, button3, button6, button7, button8, button9 });
             this.Controls.Add(statsGroup);
 
-            // Группа пользовательских запросов
+         
             var customQueriesGroup = new GroupBox()
             {
                 Text = "Пользовательские запросы",
@@ -117,7 +117,7 @@ namespace ListOFDapper
             customQueriesGroup.Controls.AddRange(new Control[] { button1, button4, button5 });
             this.Controls.Add(customQueriesGroup);
 
-            // Группа операций с данными
+       
             var dataOperationsGroup = new GroupBox()
             {
                 Text = "Операции с данными",
@@ -125,7 +125,7 @@ namespace ListOFDapper
                 Size = new Size(300, 210)
             };
 
-            // Вставка
+            
             var insertPanel = new Panel() { Location = new Point(10, 20), Size = new Size(280, 50) };
             var insertLabel = new Label() { Text = "Данные для вставки:", Location = new Point(0, 0), AutoSize = true };
             textBox1.Location = new Point(0, 20);
@@ -134,7 +134,7 @@ namespace ListOFDapper
             vstavka.Size = new Size(60, 20);
             insertPanel.Controls.AddRange(new Control[] { insertLabel, textBox1, vstavka });
 
-            // Обновление
+          
             var updatePanel = new Panel() { Location = new Point(10, 80), Size = new Size(280, 50) };
             var updateLabel = new Label() { Text = "Обновление имени:", Location = new Point(0, 0), AutoSize = true };
             textBox2.Location = new Point(0, 20);
@@ -146,7 +146,7 @@ namespace ListOFDapper
             obnova.Size = new Size(60, 20);
             updatePanel.Controls.AddRange(new Control[] { updateLabel, textBox2, updateLabel2, textBox3, obnova });
 
-            // Удаление
+        
             var deletePanel = new Panel() { Location = new Point(10, 140), Size = new Size(280, 60) };
             var deleteLabel = new Label() { Text = "Удаление по значению:", Location = new Point(0, 0), AutoSize = true };
             textBox4.Location = new Point(0, 20);
@@ -166,7 +166,7 @@ namespace ListOFDapper
             dataOperationsGroup.Controls.AddRange(new Control[] { insertPanel, updatePanel, deletePanel });
             this.Controls.Add(dataOperationsGroup);
 
-            // Группа конкретных запросов
+        
             var concreteQueriesGroup = new GroupBox()
             {
                 Text = "Конкретные запросы",
@@ -188,11 +188,11 @@ namespace ListOFDapper
             concreteQueriesGroup.Controls.Add(concretePanel);
             this.Controls.Add(concreteQueriesGroup);
 
-            // Настройка DataGridView
+           
             dataGridView1.Location = new Point(10, 420);
             dataGridView1.Size = new Size(920, 250);
 
-            // Обновление размеров формы
+       
             this.Size = new Size(950, 700);
             this.Text = "Система управления рассылкой - База данных покупателей";
         }
@@ -287,7 +287,7 @@ namespace ListOFDapper
             }
         }
 
-        // Основные запросы
+
         private void vivodInformation_Click(object sender, EventArgs e)
         {
             ShowQueryResults("SELECT * FROM List");
@@ -318,7 +318,7 @@ namespace ListOFDapper
             ShowQueryResults("SELECT DISTINCT Country FROM List");
         }
 
-        // Фильтрация данных
+
         private void OpredCity_Click(object sender, EventArgs e)
         {
             ShowQueryResults("SELECT * FROM List WHERE City = 'Novgorod'");
@@ -344,7 +344,6 @@ namespace ListOFDapper
             ShowQueryResults("SELECT Country, COUNT(*) AS CountOfCustomers FROM List GROUP BY Country");
         }
 
-        // Статистические запросы
         private void button2_Click(object sender, EventArgs e)
         {
             ShowQueryResults("SELECT Country, COUNT(DISTINCT City) AS NumberOfCities FROM List GROUP BY Country");
@@ -375,7 +374,7 @@ namespace ListOFDapper
             ShowQueryResults("SELECT TOP 1 City, COUNT(*) AS NumberOfBuyers FROM List GROUP BY City ORDER BY NumberOfBuyers DESC");
         }
 
-        // Пользовательские запросы
+
         private void button1_Click(object sender, EventArgs e)
         {
             ShowQueryResults("SELECT Section FROM List WHERE Country = 'Russia' AND LastName = 'Михалыя'");
@@ -391,7 +390,7 @@ namespace ListOFDapper
             ShowQueryResults("SELECT AuksionTovar FROM List WHERE LastName = 'Михалыя'");
         }
 
-        // Операции с данными
+
         private void vstavka_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBox1.Text))
@@ -515,7 +514,7 @@ namespace ListOFDapper
             }
         }
 
-        // Конкретные запросы
+
         private void cityConcrete_Click(object sender, EventArgs e)
         {
             ExecuteSelectOperation("DISTINCT City", "Country", textBox5.Text.Trim(), "Города в стране");
@@ -569,3 +568,4 @@ namespace ListOFDapper
         }
     }
 }
+
